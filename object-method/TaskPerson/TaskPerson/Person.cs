@@ -27,6 +27,10 @@ namespace TaskPerson
             this._age++;
 
         }
+        public void GrowOld(int number)
+        {
+            this._age = this._age + number;
+        }
         public void PrintPersonInfo()
         {
             Console.WriteLine($"Nimi:{Name}");
