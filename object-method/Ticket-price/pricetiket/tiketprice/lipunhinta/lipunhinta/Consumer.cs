@@ -5,7 +5,8 @@ using System.Text;
 namespace lipunhinta
 {
     class Customer
-    { //Fields
+    {
+        //Fields
         public string Name;
         public int Age;
         public bool Soldier;
@@ -22,16 +23,54 @@ namespace lipunhinta
             MtkMember = false;
         }
 
-        public Customer(string name, int age, bool soldier, bool student, bool mtkMember)
+        //Methods
+        public void AskData()
         {
-            Name = name;
-            Age = age;
-            Soldier = soldier;
-            Student = student;
-            MtkMember = mtkMember;
+            Console.WriteLine("Syötä nimesi: ");
+            Name = Console.ReadLine();
+
+            bool isNumber;
+            do
+            {
+                Console.WriteLine("Syötä ikäsi: ");
+                string age = Console.ReadLine();
+                isNumber = int.TryParse(age, out Age);
+            } while (isNumber != true);
+
+            string soldier;
+            do
+            {
+                Console.WriteLine("Oletko varusmies? Y/N");
+                soldier = Console.ReadLine();
+                if (soldier == "Y" || soldier == "y")
+                {
+                    Soldier = true;
+                }
+            } while (soldier != "Y" && soldier != "y" && soldier != "N" && soldier != "n");
+
+            string student;
+            do
+            {
+                Console.WriteLine("Oletko opiskelija? Y/N");
+                student = Console.ReadLine();
+                if (student == "Y" || student == "y")
+                {
+                    Student = true;
+                }
+            } while (student != "Y" && student != "y" && student != "N" && student != "n");
+
+            string mtkMember;
+            do
+            {
+                Console.WriteLine("Oletko MTK:n jäsen? Y/N");
+                mtkMember = Console.ReadLine();
+                if (mtkMember == "Y" || mtkMember == "y")
+                {
+                    MtkMember = true;
+                }
+            } while (mtkMember != "Y" && mtkMember != "y" && mtkMember != "N" && mtkMember != "n");
         }
 
-        //Methods
         public void TicketPrice()
         {
             double price = 16.00;
@@ -40,34 +79,35 @@ namespace lipunhinta
             {
                 price = price - (price * 1);
             }
+            else if (Age <= 15)
+            {
+                price = price - (price * 0.5);
+            }
             else if (Age >= 65)
             {
                 price = price - (price * 0.5);
             }
-            else if (Age >= 7 && Age <= 15)
+            else if (Soldier == true)
             {
                 price = price - (price * 0.5);
             }
             else
             {
-                if (Soldier == true)
-                {
-                    price = price - (price * 0.5);
-                }
-                else if (Student == true)
+                if (Student == true)
                 {
                     price = price - (price * 0.45);
                 }
+                if (MtkMember == true)
+                {
+                    price = price - (price * 0.15);
+                }
             }
-            Console.WriteLine($"Nimi:{Name}");
-            Console.WriteLine($"Ikä:{Age}");
-           Console.WriteLine($"varusmies {Soldier}");
-            Console.WriteLine($"mtk jäsen? {MtkMember}");
-            Console.WriteLine($"lipun hinta on {price} euroa");
+            Console.WriteLine($"Lopullinen hinta on: {price} e");
+        }
 
-
+        public void PrintCustomerInfo()
+        {
+            Console.WriteLine($"Asiakkaan nimi: {Name}\nIkä: {Age}\nVarusmies: {Soldier}\nOpiskelija: {Student}\nMTK-jäsen: {MtkMember}");
         }
     }
 }
-    
-

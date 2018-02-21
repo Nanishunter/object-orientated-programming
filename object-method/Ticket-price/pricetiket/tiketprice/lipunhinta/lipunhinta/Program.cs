@@ -6,8 +6,12 @@ namespace lipunhinta
     {
         static void Main(string[] args)
         {
-            Customer customer = new Customer("Antti Karjalainen", 21, false, false, false );
-            customer.TicketPrice();
+            Customer customer1 = new Customer();
+            customer1.AskData();
+            Console.WriteLine();
+            customer1.PrintCustomerInfo();
+            Console.WriteLine();
+            customer1.TicketPrice();
             Console.ReadKey();
         }
     }
