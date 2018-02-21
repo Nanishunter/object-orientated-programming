@@ -11,9 +11,8 @@ namespace bookauthor
             Book.ChangeTheme("sininen");
             Book book1 = new Book("Harski potter", "JKRowling", "Otava", 15 );
             book1.GetBookInfo("Harski potter");
-            Book book2 = new Book("Harski potter", "JKRowling", "Otava", 45);
-            
-            book2.GetBookInfo("Harsi potter");
+            Book book2 = new Book("Harski potter", "JKRowling", "Otava",45.565);
+            book2.GetBookInfo("Harski potter");
             Console.ReadKey();
         }
     }

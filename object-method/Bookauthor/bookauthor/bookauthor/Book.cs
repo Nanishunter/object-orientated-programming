@@ -34,10 +34,10 @@ namespace bookauthor
 
 
         }
-        
-        
 
-        public double Price 
+
+
+        public double Price
         {
             get
             {
@@ -45,15 +45,16 @@ namespace bookauthor
             }
             set
             {
-                if (value > 30 )
+                if (value > 30)
                 {
-                    _price = value - (value * 0.1);
+                    _price = value * 0.9;
                 }
                 else
                 {
                     _price = value;
                 }
             }
+
 
         }
         public void GetBookInfo( string name)
