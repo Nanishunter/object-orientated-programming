@@ -11,21 +11,29 @@ namespace Bankapp
 
         private List<Account> _accounts;
         private string _name;
+        
         //Constructor
 
         public Bank(string name)
         {
             _name = name;
-            _accounts = new List<Account>();
+           _accounts = new List<Account>();
+        }
+        public Bank(string name, List<Account> accounts)
+        {
+            _name = name;
+            _accounts = accounts;
+
+
         }
 
         public string CreateAccount()
         {
             Random rnd = new Random();
             string rndAccount = "FI";
-            for (int i = 0; i > 16; i++) 
+            for (int i = 0; i < 16; i++) 
             {
-                rndAccount += rnd.Next(0,9);
+                rndAccount += rnd.Next(0,10);
             }
             _accounts.Add(new Account(rndAccount));
             return rndAccount;
@@ -35,7 +43,8 @@ namespace Bankapp
         public bool AddTransactionForCustomer(string accountNumber, Transaction transaction)
         {
             return (from account in _accounts
-                    where account.Accountnumber == accountNumber
+                    where account.AccountNumber == accountNumber
+
                     select account).First().Addtransaction(transaction);
 
 

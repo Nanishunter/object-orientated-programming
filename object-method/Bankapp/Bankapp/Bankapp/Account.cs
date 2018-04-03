@@ -15,14 +15,21 @@ namespace Bankapp
 
         public Account(string accountNumber)
         {
-            AccountNumber = accountNumber;
+            _accountNumber = accountNumber;
             _transactions = new List<Transaction>();
+            
         }
 
+        public Account (string accountNumber , double balance, List<Transaction> transactions)
+        {
+            _accountNumber = accountNumber;
+            Balance = balance;
+            _transactions = transactions;
+        }
         
         public double Balance { get => _balance; set => _balance = value; }
         public string AccountNumber { get => _accountNumber; set => _accountNumber = value; }
-        public string Accountnumber { get; internal set; }
+        
 
         public bool Addtransaction(Transaction transaction)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bankapp
 {
@@ -30,13 +31,16 @@ namespace Bankapp
             Console.WriteLine("{0} - balance: {1}{2:0.00}",
             customer.ToString(), balance >= 0 ? "+" : "", balance);
 
-            Console.ReadKey();
+            
 
 
 
 
 
         }
+
+
+
        
         
     }
