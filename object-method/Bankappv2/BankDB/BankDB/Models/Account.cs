@@ -12,12 +12,6 @@ namespace BankDB.Models
             Transaction = new HashSet<Transaction>();
         }
 
-        public Account(string name, decimal balance)
-        {
-            Name = name;
-            Balance = balance;
-        }
-
         [Key]
         [Column("IBAN", TypeName = "nchar(10)")]
         public string Iban { get; set; }
@@ -31,16 +25,10 @@ namespace BankDB.Models
         [ForeignKey("BankId")]
         [InverseProperty("Account")]
         public Bank Bank { get; set; }
-        [ForeignKey("BankId")]
+        [ForeignKey("CustomerId")]
         [InverseProperty("Account")]
-        public Customer BankNavigation { get; set; }
+        public Customer Customer { get; set; }
         [InverseProperty("IbanNavigation")]
         public ICollection<Transaction> Transaction { get; set; }
-
-        //override tostring
-        public override string ToString()
-        {
-            return $"{Iban}, {Balance}";
-        }
     }
 }

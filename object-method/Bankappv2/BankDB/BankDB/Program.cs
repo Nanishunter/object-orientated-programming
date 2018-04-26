@@ -12,7 +12,7 @@ namespace BankDB
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-           
+            Print();
 
             Console.WriteLine("\nPress any key to quit");
             Console.ReadLine();

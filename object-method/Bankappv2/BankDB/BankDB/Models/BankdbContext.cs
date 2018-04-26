@@ -32,13 +32,13 @@ namespace BankDB.Models
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.BankId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Account_Bank");
+                    .HasConstraintName("FK_Account_Bank1");
 
-                entity.HasOne(d => d.BankNavigation)
+                entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Account)
-                    .HasForeignKey(d => d.BankId)
+                    .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Account_Customer");
+                    .HasConstraintName("FK_Account_Customer1");
             });
 
             modelBuilder.Entity<Bank>(entity =>
@@ -56,7 +56,7 @@ namespace BankDB.Models
                     .WithMany(p => p.Customer)
                     .HasForeignKey(d => d.BankId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Customer_Bank");
+                    .HasConstraintName("FK_Customer_Bank1");
             });
 
             modelBuilder.Entity<Transaction>(entity =>
@@ -65,7 +65,7 @@ namespace BankDB.Models
                     .WithMany(p => p.Transaction)
                     .HasForeignKey(d => d.Iban)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Transaction_Account");
+                    .HasConstraintName("FK_Transaction_Account1");
             });
         }
     }

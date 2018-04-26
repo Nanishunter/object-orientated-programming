@@ -11,12 +11,6 @@ namespace BankDB.Models
         {
         }
 
-        public Transaction(decimal amount, DateTime timeStamp)
-        {
-            Amount = amount;
-            TimeStamp = timeStamp;
-        }
-
         public long Id { get; set; }
         [Required]
         [Column("IBAN", TypeName = "nchar(10)")]
@@ -29,11 +23,5 @@ namespace BankDB.Models
         [ForeignKey("Iban")]
         [InverseProperty("Transaction")]
         public Account IbanNavigation { get; set; }
-
-        //Tostring override
-        public override string ToString()
-        {
-            return $"{Amount}, {TimeStamp}";
-        }
     }
 }

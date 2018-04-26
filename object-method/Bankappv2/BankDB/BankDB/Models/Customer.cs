@@ -30,13 +30,7 @@ namespace BankDB.Models
         [ForeignKey("BankId")]
         [InverseProperty("Customer")]
         public Bank Bank { get; set; }
-        [InverseProperty("BankNavigation")]
+        [InverseProperty("Customer")]
         public ICollection<Account> Account { get; set; }
-
-        //Override tostring
-        public override string ToString()
-        {
-            return $"{Id}, {Firstname} {Lastname}";
-        }
     }
 }
